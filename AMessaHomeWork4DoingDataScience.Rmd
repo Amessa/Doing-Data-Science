@@ -1,0 +1,174 @@
+---
+title: "Bootstarpping from normal and exponential distributions"
+author: "MessaA"
+date: "June 8, 2016"
+output: html_document
+---
+ #**Bootstrapping from normal random distribution**  
+   ##** a) Sample with size=50, mean=25, SD=6**
+```{r Bootstarping1}
+x<-rnorm(50,25,6)
+M=mean(x)
+Replicate<-1000
+bootnorm1<-numeric(Replicate)
+for(i in 1:Replicate){
+temp<-sample(x,50,replace=T)
+bootnorm1[i]<-mean(temp)
+}
+```
+ ###**Summary of bootnorm1**  
+```{r summary1}
+summary(bootnorm1)
+
+```  
+ ###**Comparing means and standard deviations of orginal sample and bootstrapsamples**  
+```{r Mean.SD1}
+M
+mean(bootnorm1)
+sd(x)
+sd(bootnorm1)
+
+
+```  
+ ###**Histogram of bootstarp samples and some comparisons such as means of orginal and bootstrap**  
+```{r Histogram1}
+hist(bootnorm1)
+abline(v=M,col="blue", lwd=2, lty=2)
+abline(v=mean(bootnorm1),col="red", lwd=2, lty=3)
+abline(v=25,col="black", lwd=2, lty=4)
+
+```    
+  
+ ###**Estimation of bias which can be caused due to random samples of randoms and source of variablity of bootstraping itself**
+```{r Bias1}
+est.bias1<-M-mean(bootnorm1)
+est.bias1
+
+```  
+      
+    
+      ##** b) Sample with size=100, mean=25, SD=6**
+```{r Bootstarping2}
+x<-rnorm(100,25,6)
+M2=mean(x)
+Replicate<-1000
+bootnorm2<-numeric(Replicate)
+for(i in 1:Replicate){
+temp<-sample(x,100,replace=T)
+bootnorm2[i]<-mean(temp)
+}
+```
+ ###**Summary of bootnorm2**  
+```{r summary2}
+summary(bootnorm2)
+
+```  
+ ###**Comparing means and standard deviations of orginal sample and bootstrapsamples**  
+```{r Mean.SD2}
+M2
+mean(bootnorm2)
+sd(x)
+sd(bootnorm2)
+
+```  
+ ###**Histogram of bootstarp samples and some comparisons such as means of orginal and bootstrap**  
+```{r Histogram2}
+hist(bootnorm2)
+abline(v=M2,col="blue", lwd=2, lty=2)
+abline(v=mean(bootnorm2),col="red", lwd=2, lty=3)
+abline(v=25,col="black", lwd=2, lty=4)
+
+```    
+  
+ ###**Estimation of bias which can be caused due to random samples of randoms and source of variablity of bootstraping itself**
+```{r Bias2}
+est.bias2<-M2-mean(bootnorm2)
+est.bias2
+```
+
+  #**Bootstrapping from exponential random distribution**  
+   ##**a) Sample with size=75, lambda(rate)=0.2, where mean=sd=1/lambda**
+```{r Bootstarping3}
+x<-rexp(75,0.2)
+M3=mean(x)
+Replicate<-1000
+bootexp3<-numeric(Replicate)
+for(i in 1:Replicate){
+temp<-sample(x,75,replace=T)
+bootexp3[i]<-mean(temp)
+}
+```
+ ###**Summary of bootexp3**  
+```{r summary3}
+summary(bootexp3)
+
+```  
+ ###**Comparing means and standard deviations of orginal sample and bootstrapsamples**  
+```{r Mean.SD3}
+M3
+mean(bootexp3)
+sd(x)
+sd(bootexp3)
+```  
+ ###**Histogram of bootstarp samples and some comparisons such as means of orginal and bootstrap**  
+```{r Histogram3}
+hist(bootexp3)
+abline(v=M3,col="blue", lwd=2, lty=2)
+abline(v=mean(bootexp3),col="red", lwd=2, lty=3)
+abline(v=5,col="black", lwd=2, lty=4)
+
+```    
+  
+ ###**Estimation of bias which can be caused due to random samples of randoms and source of variablity of bootstraping itself**
+```{r Bias3}
+est.bias3<-M3-mean(bootexp3)
+est.bias3
+
+```  
+      
+    
+       ##** b)Sample with size=200, lambda(rate)=0.2, where mean=sd=1/lambda**
+```{r Bootstarping4}
+x<-rexp(200,0.2)
+M4=mean(x)
+Replicate<-1000
+bootexp4<-numeric(Replicate)
+for(i in 1:Replicate){
+temp<-sample(x,200,replace=T)
+bootexp4[i]<-mean(temp)
+}
+```
+ ###**Summary of bootexp4**  
+```{r summary4}
+summary(bootexp4)
+
+```  
+ ###**Comparing means and standard deviations of orginal sample and bootstrapsamples**  
+```{r Mean.SD4}
+M4
+mean(bootexp4)
+sd(x)
+sd(bootexp4)
+
+```  
+ ###**Histogram of bootstarp samples and some comparisons such as means of orginal and bootstrap**  
+```{r Histogram4}
+hist(bootexp4)
+abline(v=M4,col="blue", lwd=2, lty=2)
+abline(v=mean(bootexp4),col="red", lwd=2, lty=3)
+abline(v=5,col="black", lwd=2, lty=4)
+
+```    
+  
+ ###**Estimation of bias which can be caused due to random samples of randoms and source of variablity of bootstraping itself**
+```{r Bias4}
+est.bias4<-M4-mean(bootexp4)
+est.bias4
+```
+
+
+
+
+
+
+
